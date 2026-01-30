@@ -1,22 +1,22 @@
 # Wine Patches for Clip Studio Paint Video Export
 
-Adds H.264 video encoding support to Wine so Clip Studio Paint can export animations and timelapses.
+Adds H.264 video encoding support to Wine so Clip Studio Paint can export animations and timelapses. These patches are only tested with CSP running under wine, and is not intended to be a proper implimentation of the WindowsMF api. **Provided as-is with no support** - this is a working solution for a specific program.
 
-## Quick Install
+## Install
 
 **Pre-built DLLs** (in `release/` folder):
 ```bash
+# RECOMMENDED: For Bottles - copy the dll files into your bottles system 32.
+cp release/x86_64-windows/*.dll ~/.local/share/bottles/bottles/YOUR_BOTTLE_NAME/drive_c/windows/system32/
+
 # System Wine (requires root)
 sudo cp release/x86_64-windows/*.dll /usr/lib/wine/x86_64-windows/
 sudo cp release/x86_64-unix/*.so /usr/lib/wine/x86_64-unix/
-
-# For Bottles - copy to your bottle's system32
-cp release/x86_64-windows/*.dll ~/.local/share/bottles/bottles/YOUR_BOTTLE_NAME/drive_c/windows/system32/
 ```
 
 **Or apply patch to Wine source:**
 ```bash
-cd wine-source
+cd wine-source # where your wine source is
 patch -p1 < ../wine-mf-encoder-support.patch
 ./configure --enable-win64 && make -j$(nproc)
 ```
@@ -40,12 +40,8 @@ In Clip Studio Paint:
 3. Export
 
 ## Notes
-
-- Non-standard resolutions (e.g., 902x1280) may have minor visual artifacts
-- Standard resolutions (1920x1080, 1280x720) work perfectly
-- Only tested with H.264 encoding
-- Changing the video export animation framerate from the default will break encoding
-- **Provided as-is with no support** - this is a working solution, not a polished product
+- Changing the video export animation framerate from the default will break encoding, I'll see if i have time for a fix. However default (24fps) exports for animations work.
+- Timelapses work flawlessly.
 
 ## License
 
