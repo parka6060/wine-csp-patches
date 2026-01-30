@@ -44,6 +44,8 @@ In Clip Studio Paint:
 - Non-standard resolutions (e.g., 902x1280) may have minor visual artifacts
 - Standard resolutions (1920x1080, 1280x720) work perfectly
 - Only tested with H.264 encoding
+- Changing the video export animation framerate from the default will break encoding
+- **Provided as-is with no support** - this is a working solution, not a polished product
 
 ## License
 
