@@ -5,9 +5,9 @@ Adds H.264 video encoding support to Wine so Clip Studio Paint can export animat
 ## Install
 
 **Pre-built DLLs** (in `release/` folder):
-```bash
-# RECOMMENDED: For Bottles - copy the dll files into your bottles system 32.
-cp release/x86_64-windows/*.dll ~/.local/share/bottles/bottles/YOUR_BOTTLE_NAME/drive_c/windows/system32/
+RECOMMENDED: For Bottles - copy the dll files into your bottles system 32.
+- In the bottles interface hit 'Browse', go to drive_c/windows/system32/
+- Copy the two DLL files from release>windows.
 
 # System Wine (requires root)
 sudo cp release/x86_64-windows/*.dll /usr/lib/wine/x86_64-windows/
